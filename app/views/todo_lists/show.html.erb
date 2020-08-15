@@ -1,0 +1,35 @@
+<div class="todo_list">
+	<h1>
+		<%= "#{@todo_list.list_name}" %>
+	</h1>
+	<h2>
+        <%= "List due date: #{@todo_list.list_due_date}" %>
+	</h2>
+</div>
+<p />
+
+<%= link_to 'Add Todo Item', new_todo_list_todo_item_path(@todo_list) %>
+
+<% @todo_item.each do |todo_item| %>
+  <div class="todo_items">
+    <span>
+    	<% if todo_item.done? %>
+        	<div class="done">
+      	<% else %>
+        	<div class="not_done">
+      	<% end %>
+      	<%= "#{todo_item.due_date}" %>
+      	</div>
+    	<%= "-  " %>
+    	<%= link_to "#{todo_item.task_title}", [@todo_list, todo_item], class: "todo_list_link" %>
+    </span>
+  </div>
+<% end %>
+<p />
+<%= will_paginate @todo_item %>
+<p />
+
+<%= link_to 'Edit Todo List', edit_todo_list_path(@todo_list) %> |
+<%= link_to 'Delete Todo List', @todo_list, method: :delete, 
+      data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back To Todo Lists', todo_lists_path %>
