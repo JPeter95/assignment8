@@ -22,9 +22,14 @@
       	</div>
     	<%= "-  " %>
     	<%= link_to "#{todo_item.task_title}", [@todo_list, todo_item], class: "todo_list_link" %>
+      <!-- <%= render @todo_item %> -->
+      <% if !todo_item.done? %>
+      <%= link_to 'Mark Item as Done', edit_todo_list_todo_item_path(@todo_list, todo_item), remote: true, id: 'edit_todo_item_link' %>
+      <% end %>
     </span>
   </div>
 <% end %>
+<div id='form_container' />
 <p />
 <%= will_paginate @todo_item %>
 <p />

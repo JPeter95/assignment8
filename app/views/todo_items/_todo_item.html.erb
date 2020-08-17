@@ -1,0 +1,13 @@
+<%= link_to 'Mark Item as Done', edit_todo_list_todo_item_path(@todo_list, todo_item), remote: true, id: 'edit_todo_item_link' %>
+
+
+<%#= This code wasn't working %>
+
+<%#=<%= form_with(model: todo_item, remote: true) do |form| %>
+  <%#=<%= form.hidden_field :due_date %>
+  <%#=<%= form.hidden_field :task_title %>
+  <%#=<%= form.hidden_field :description %>
+  <%#=<%= form.hidden_field :done, value: 1 %>
+
+  <%#=<%= form.submit %>
+<%#<% end %>
